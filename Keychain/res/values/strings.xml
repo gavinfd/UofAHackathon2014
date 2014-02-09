@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Keychain</string>
+    <string name="app_name">Locksmith</string>
     <string name="action_status">Status</string>
     <string name="action_config">Configure Devices</string>
     <string name="title_section1">Home Device</string>
@@ -17,7 +17,11 @@
     <string name="password_label">Passphrase</string>
     <string name="save_label">Save</string>
     
-    <color name="blue1">#3E00FF</color>
+    <color name="SeaShell">#48D1CC</color>
     <color name="white">#FFFFFF</color>
+    <color name="Salmon">#DBCB39</color>
+    <color name="Violet">#DBC711</color>
+    <color name="Gold">#DBC500</color>
+    <color name="Gold2">#D8CA5D</color>
 
 </resources>

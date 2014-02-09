@@ -3,9 +3,10 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue1"
+    android:background="@color/SeaShell"
     tools:context=".ConfigActivity"
-    tools:ignore="MergeRootFrame" >
+    tools:ignore="MergeRootFrame"
+>
 
     <TableLayout
         android:layout_width="284dp"
@@ -24,7 +25,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/lock_label"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                 />
 
         </TableRow>
 
@@ -52,7 +54,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/ip_label"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/white" />
+                android:textColor="@color/white" 
+                />
 
         </TableRow>
 
@@ -80,7 +83,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/password_label"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/white" />
+                android:textColor="@color/white" 
+                />
 
         </TableRow>
 
@@ -108,7 +112,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/save_label"
-                android:textColor="@color/white" />
+                android:textColor="@color/white" 
+                />
 
         </TableRow>
     </TableLayout>

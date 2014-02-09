@@ -3,7 +3,8 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue1"
+    android:background="@color/SeaShell"
+    android:gravity="fill_vertical"
     tools:context=".MainActivity"
     tools:ignore="MergeRootFrame" >
 
@@ -15,7 +16,13 @@
         android:layout_alignRight="@+id/buttonSave"
         android:layout_below="@+id/buttonSave"
         android:layout_marginTop="17dp"
-        android:text="@string/Second_Button" />
+        android:background="@color/Salmon"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        android:text="@string/Second_Button"
+        android:textColor="@color/white" />
 
     <Button
         android:id="@+id/buttonSave"
@@ -23,9 +30,20 @@
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="184dp"
+        android:layout_marginTop="137dp"
+        android:angle="270"
+        android:background="@color/Violet"
+        android:endColor="@color/Gold2"
+        android:fadingEdge="horizontal"
         android:minWidth="48dp"
-        android:text="@string/First_Button" />
+        android:padding="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        android:startColor="@color/Gold"
+        android:text="@string/First_Button"
+        android:textColor="@color/white" />
 
 </RelativeLayout>
 
