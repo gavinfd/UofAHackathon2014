@@ -11,6 +11,7 @@ import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -34,11 +35,21 @@ public class MainActivity extends FragmentActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
+		
 		final Button button = (Button) findViewById(R.id.button1);
+		final Button button_lock = (Button) findViewById(R.id.button2);
 		final Intent intent = new Intent(this, ConfigActivity.class);
+		
 		button.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
+				Log.d("test", "Button1 pressed");
+				startActivity(intent);
+			}
+		});
+		
+		button_lock.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Log.d("test", "Button2 pressed");
 				startActivity(intent);
 			}
 		});
@@ -47,7 +58,7 @@ public class MainActivity extends FragmentActivity implements
 		final ActionBar actionBar = getActionBar();
 		actionBar.setDisplayShowTitleEnabled(false);
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
-
+		
 		// Set up the dropdown list navigation in the action bar.
 		actionBar.setListNavigationCallbacks(
 		// Specify a SpinnerAdapter to populate the dropdown list.
@@ -58,7 +69,7 @@ public class MainActivity extends FragmentActivity implements
 								getString(R.string.title_section2),
 								getString(R.string.title_section3), }), this);
 	}
-
+	
 	/**
 	 * Backward-compatible version of {@link ActionBar#getThemedContext()} that
 	 * simply returns the {@link android.app.Activity} if
