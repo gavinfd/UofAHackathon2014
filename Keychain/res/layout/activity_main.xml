@@ -24,8 +24,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="184dp"
         android:minWidth="48dp"
-        android:text="@string/First_Button"
-        android:textColorHint="@style/AppBaseTheme" />
+        android:text="@string/First_Button" />
 
 </RelativeLayout>
 
