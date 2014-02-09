@@ -7,6 +7,8 @@ import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.os.Bundle;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -20,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class ConfigActivity extends FragmentActivity implements
@@ -30,16 +33,38 @@ public class ConfigActivity extends FragmentActivity implements
 	 * current dropdown position.
 	 */
 	private static final String STATE_SELECTED_NAVIGATION_ITEM = "selected_navigation_item";
-
+	
+	public static final String PREFS_NAME = "LockInfo";
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_config);
-
+		
+		final SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+		String stored_label = settings.getString("label", "");
+		String stored_ip = settings.getString("ip_address", "");
+		String stored_passphrase = settings.getString("passphrase", "");
+		
+		final EditText label = (EditText) findViewById(R.id.editLabel);
+		final EditText ip_address = (EditText) findViewById(R.id.editIP);
+		final EditText passphrase = (EditText) findViewById(R.id.editPassphrase);
+		
+		label.setText(stored_label);
+		ip_address.setText(stored_ip);
+		passphrase.setText(stored_passphrase);
+		
 		final Button button = (Button) findViewById(R.id.buttonSave);
+		
 		button.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-
+				
+				SharedPreferences.Editor editor = settings.edit();
+				editor.putString("label", label.getText().toString());
+				editor.putString("ip_address", ip_address.getText().toString());
+				editor.putString("passphrase", passphrase.getText().toString());
+				
+				editor.commit();
 			}
 		});
 
@@ -137,5 +162,17 @@ public class ConfigActivity extends FragmentActivity implements
 			return rootView;
 		}
 	}
-
+	
+	@Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.action_main:
+            	Intent myIntent = new Intent(this, MainActivity.class);
+                startActivity(myIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }

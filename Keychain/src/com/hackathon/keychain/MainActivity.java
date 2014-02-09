@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class MainActivity extends FragmentActivity implements
@@ -38,18 +39,19 @@ public class MainActivity extends FragmentActivity implements
 		
 		final Button button_unlock = (Button) findViewById(R.id.buttonSave);
 		final Button button_lock = (Button) findViewById(R.id.button2);
+		final ProgressBar circle = (ProgressBar) findViewById(R.id.progressBar1);
 		final Intent intent = new Intent(this, ConfigActivity.class);
 		
 		button_unlock.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Log.d("test", "Button1 pressed");
 				try {
+					//circle.setVisibility(View.VISIBLE);
 					UDPcommand(button_lock, "unlock");
 				} catch (UnknownHostException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				startActivity(intent);
 			}
 		});
 		
@@ -58,11 +60,12 @@ public class MainActivity extends FragmentActivity implements
 				Log.d("test", "Button2 pressed");
 				try {
 					UDPcommand(button_lock, "lock");
+					//circle.setVisibility(View.VISIBLE);
 				} catch (UnknownHostException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				startActivity(intent);
+				//circle.setVisibility(View.GONE);
 			}
 		});
 		
@@ -168,5 +171,18 @@ public class MainActivity extends FragmentActivity implements
 			return rootView;
 		}
 	}
-
+	
+	@Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.action_config:
+            	Intent myIntent = new Intent(this, ConfigActivity.class);
+            	//finish();
+                startActivity(myIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }

@@ -27,5 +27,14 @@
         android:minWidth="48dp"
         android:text="@string/First_Button" />
 
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/buttonSave"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="84dp"
+        android:visibility="invisible" />
+
 </RelativeLayout>
 
