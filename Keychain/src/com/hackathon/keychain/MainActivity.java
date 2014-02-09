@@ -1,4 +1,7 @@
 package com.hackathon.keychain;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.os.Bundle;
@@ -33,13 +36,19 @@ public class MainActivity extends FragmentActivity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		final Button button = (Button) findViewById(R.id.button1);
+		final Button button_unlock = (Button) findViewById(R.id.button1);
 		final Button button_lock = (Button) findViewById(R.id.button2);
 		final Intent intent = new Intent(this, ConfigActivity.class);
 		
-		button.setOnClickListener(new View.OnClickListener() {
+		button_unlock.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Log.d("test", "Button1 pressed");
+				try {
+					UDPcommand(button_lock, "unlock");
+				} catch (UnknownHostException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				startActivity(intent);
 			}
 		});
@@ -47,6 +56,12 @@ public class MainActivity extends FragmentActivity implements
 		button_lock.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Log.d("test", "Button2 pressed");
+				try {
+					UDPcommand(button_lock, "lock");
+				} catch (UnknownHostException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				startActivity(intent);
 			}
 		});
@@ -65,6 +80,16 @@ public class MainActivity extends FragmentActivity implements
 								getString(R.string.title_section1),
 								getString(R.string.title_section2),
 								getString(R.string.title_section3), }), this);
+	}
+	
+	private UdpConnection udpConnection;
+
+	public void UDPcommand(View button, String message) throws UnknownHostException {
+		Log.e("Config", "Unable to send message");
+		InetAddress ip_address = InetAddress.getByName("192.168.0.19");
+		int socket = 40;
+		Thread t = new Thread(new UdpConnection(ip_address, socket, message));
+		t.start();
 	}
 	
 	/**

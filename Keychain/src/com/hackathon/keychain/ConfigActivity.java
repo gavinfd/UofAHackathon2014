@@ -39,12 +39,7 @@ public class ConfigActivity extends FragmentActivity implements
 		final Button button = (Button) findViewById(R.id.testButton1);
 		button.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				try {
-					UDPTest(button);
-				} catch (UnknownHostException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+
 			}
 		});
 
@@ -64,15 +59,7 @@ public class ConfigActivity extends FragmentActivity implements
 								getString(R.string.title_section3), }), this);
 	}
 
-	private UdpConnection udpConnection;
-
-	public void UDPTest(View button) throws UnknownHostException {
-		Log.e("Config", "Unable to send message");
-		InetAddress ip_address = InetAddress.getByName("192.168.0.19");
-		int socket = 40;
-		Thread t = new Thread(new UdpConnection(ip_address, socket));
-		t.start();
-	}
+	
 
 	/**
 	 * Backward-compatible version of {@link ActionBar#getThemedContext()} that
