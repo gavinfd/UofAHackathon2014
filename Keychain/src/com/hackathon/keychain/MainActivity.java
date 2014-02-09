@@ -36,7 +36,7 @@ public class MainActivity extends FragmentActivity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		final Button button_unlock = (Button) findViewById(R.id.button1);
+		final Button button_unlock = (Button) findViewById(R.id.buttonSave);
 		final Button button_lock = (Button) findViewById(R.id.button2);
 		final Intent intent = new Intent(this, ConfigActivity.class);
 		

@@ -11,7 +11,13 @@
     <string name="title_activity_config">ConfigActivity</string>
     <string name="First_Button">Unlock</string>
     <string name="Second_Button">Lock</string>
+    
+    <string name="lock_label">Lock Label</string>
+    <string name="ip_label">IP Address</string>
+    <string name="password_label">Passphrase</string>
+    <string name="save_label">Save</string>
+    
+    <color name="blue1">#3E00FF</color>
+    <color name="white">#FFFFFF</color>
 
-    
-    
 </resources>

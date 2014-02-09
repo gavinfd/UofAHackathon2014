@@ -36,7 +36,7 @@ public class ConfigActivity extends FragmentActivity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_config);
 
-		final Button button = (Button) findViewById(R.id.testButton1);
+		final Button button = (Button) findViewById(R.id.buttonSave);
 		button.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 
