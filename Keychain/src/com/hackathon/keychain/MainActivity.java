@@ -7,6 +7,7 @@ import android.app.ActionBar;
 import android.os.Bundle;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -32,6 +33,8 @@ public class MainActivity extends FragmentActivity implements
 	 */
 	private static final String STATE_SELECTED_NAVIGATION_ITEM = "selected_navigation_item";
 
+	public static final String PREFS_NAME = "LockInfo";
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -88,8 +91,9 @@ public class MainActivity extends FragmentActivity implements
 	private UdpConnection udpConnection;
 
 	public void UDPcommand(View button, String message) throws UnknownHostException {
-		Log.e("Config", "Unable to send message");
-		InetAddress ip_address = InetAddress.getByName("192.168.0.19");
+		final SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+		String stored_ip = settings.getString("ip_address", "");
+		InetAddress ip_address = InetAddress.getByName(stored_ip);
 		int socket = 40;
 		Thread t = new Thread(new UdpConnection(ip_address, socket, message));
 		t.start();
