@@ -1,5 +1,8 @@
 package com.hackathon.keychain;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.os.Bundle;
@@ -8,6 +11,7 @@ import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -15,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class ConfigActivity extends FragmentActivity implements
@@ -31,6 +36,18 @@ public class ConfigActivity extends FragmentActivity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_config);
 
+		final Button button = (Button) findViewById(R.id.testButton1);
+		button.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				try {
+					UDPTest(button);
+				} catch (UnknownHostException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+
 		// Set up the action bar to show a dropdown list.
 		final ActionBar actionBar = getActionBar();
 		actionBar.setDisplayShowTitleEnabled(false);
@@ -45,6 +62,16 @@ public class ConfigActivity extends FragmentActivity implements
 								getString(R.string.title_section1),
 								getString(R.string.title_section2),
 								getString(R.string.title_section3), }), this);
+	}
+
+	private UdpConnection udpConnection;
+
+	public void UDPTest(View button) throws UnknownHostException {
+		Log.e("Config", "Unable to send message");
+		InetAddress ip_address = InetAddress.getByName("192.168.0.19");
+		int socket = 40;
+		Thread t = new Thread(new UdpConnection(ip_address, socket));
+		t.start();
 	}
 
 	/**
