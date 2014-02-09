@@ -5,6 +5,8 @@
     android:layout_height="match_parent"
     android:background="@color/SeaShell"
     android:gravity="fill_vertical"
+   	android:screenOrientation="portrait"
+   	android:configChanges="orientation|keyboardHidden"
     tools:context=".MainActivity"
     tools:ignore="MergeRootFrame" >
 
