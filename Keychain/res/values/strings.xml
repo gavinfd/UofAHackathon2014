@@ -4,6 +4,7 @@
     <string name="app_name">Locksmith</string>
     <string name="action_status">Status</string>
     <string name="action_config">Configure Devices</string>
+    <string name="action_main">Main</string>
     <string name="title_section1">Home Device</string>
     <string name="title_section2">Back Door</string>
     <string name="title_section3">Garage</string>
