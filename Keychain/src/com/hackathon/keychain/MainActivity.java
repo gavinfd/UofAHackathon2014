@@ -1,5 +1,7 @@
 package com.hackathon.keychain;
 
+import java.net.UnknownHostException;
+
 import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.os.Bundle;
@@ -34,11 +36,11 @@ public class MainActivity extends FragmentActivity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		final Button button = (Button) findViewById(R.id.button1);
+		final Button button_unlock = (Button) findViewById(R.id.button1);
 		final Button button_lock = (Button) findViewById(R.id.button2);
 		final Intent intent = new Intent(this, ConfigActivity.class);
 		
-		button.setOnClickListener(new View.OnClickListener() {
+		button_unlock.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Log.d("test", "Button1 pressed");
 				startActivity(intent);
