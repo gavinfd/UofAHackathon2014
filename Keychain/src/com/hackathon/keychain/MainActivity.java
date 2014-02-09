@@ -1,9 +1,12 @@
 package com.hackathon.keychain;
 
+import java.net.UnknownHostException;
+
 import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.os.Bundle;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -15,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends FragmentActivity implements
@@ -31,6 +35,14 @@ public class MainActivity extends FragmentActivity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		final Button button = (Button) findViewById(R.id.button1);
+		final Intent intent = new Intent(this, ConfigActivity.class);
+		button.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				startActivity(intent);
+			}
+		});
+		
 		// Set up the action bar to show a dropdown list.
 		final ActionBar actionBar = getActionBar();
 		actionBar.setDisplayShowTitleEnabled(false);
